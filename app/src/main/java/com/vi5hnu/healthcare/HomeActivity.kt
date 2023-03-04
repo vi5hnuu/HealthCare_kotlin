@@ -12,6 +12,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var vFindDoctor:CardView
     private lateinit var vAboutDevp:CardView
     private lateinit var vlab_test:CardView
+    private lateinit var vorder_details:CardView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -19,6 +20,7 @@ class HomeActivity : AppCompatActivity() {
         vFindDoctor=findViewById(R.id.vfind_doctor)
         vAboutDevp=findViewById(R.id.vabout_devp)
         vlab_test=findViewById(R.id.vlab_test)
+        vorder_details=findViewById(R.id.vorder_details)
 
         welcomeUser()
 
@@ -46,6 +48,11 @@ class HomeActivity : AppCompatActivity() {
         vlab_test.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
                 startActivity(Intent(this@HomeActivity,LabTestsActivity::class.java))
+            }
+        })
+        vorder_details.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v: View?) {
+                startActivity(Intent(this@HomeActivity,OrdersActivity::class.java))
             }
         })
     }

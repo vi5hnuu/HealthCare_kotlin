@@ -42,6 +42,7 @@ class Database(context: Context, dbName: String, factory: CursorFactory?, versio
                 "price double check(price >= 0));"
         val orderTable="create table  IF NOT EXISTS orders(" +
                 "_id integer , AUTO_INCREMENT," +
+                "name text,"+
                 "username text primary key," +
                 "order_id integer check(order_id>=0)," +
                 "type text check(type in (\"TEST\",\"MEDICINE\"))," +
@@ -143,12 +144,19 @@ class Database(context: Context, dbName: String, factory: CursorFactory?, versio
             return
         }
         val cv=ContentValues()
+        cv.put("name",name)
+        cv.put("amount",amount)
         cv.put("username",username)
         cv.put("order_id",order_id)
         cv.put("type",type.identifier)
         val db:SQLiteDatabase=writableDatabase
         db.insert("orders",null,cv)
         db.close()
+    }
+    fun getOrders():Cursor{
+        val db:SQLiteDatabase=readableDatabase
+        val cursor=db.query("orders",null,null,null,null,null,null)
+        return cursor
     }
     fun removeFromOrders(order_id:String,name:String,amount:String,type:ORDER_TYPE){
         if(!orderAlreadyExist(username,order_id,type)){

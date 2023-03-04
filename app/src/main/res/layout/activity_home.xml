@@ -165,6 +165,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/vorder_details"
             android:background="@color/colorGrey"
             android:layout_margin="5dp"
             android:layout_columnWeight="1"
