@@ -43,6 +43,7 @@ class Database(context: Context, dbName: String, factory: CursorFactory?, versio
         val orderTable="create table  IF NOT EXISTS orders(" +
                 "_id integer , AUTO_INCREMENT," +
                 "name text,"+
+                "amount number,"+
                 "username text primary key," +
                 "order_id integer check(order_id>=0)," +
                 "type text check(type in (\"TEST\",\"MEDICINE\"))," +
@@ -155,8 +156,18 @@ class Database(context: Context, dbName: String, factory: CursorFactory?, versio
     }
     fun getOrders():Cursor{
         val db:SQLiteDatabase=readableDatabase
-        val cursor=db.query("orders",null,null,null,null,null,null)
+        val cursor=db.query("orders", arrayOf("_id","name","amount","order_id"),null,null,null,null,null)
         return cursor
+    }
+    fun getOrderTotal():String{
+        val db:SQLiteDatabase=readableDatabase
+        val cursor=db.rawQuery("select sum(amount) from orders;", null)
+        var total="0"
+        if(cursor.moveToFirst()){
+            total= cursor.getString(0)
+        }
+        cursor.close()
+        return total;
     }
     fun removeFromOrders(order_id:String,name:String,amount:String,type:ORDER_TYPE){
         if(!orderAlreadyExist(username,order_id,type)){

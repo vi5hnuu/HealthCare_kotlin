@@ -20,7 +20,7 @@
            android:paddingVertical="7dp"
            >
            <TextView
-               android:id="@+id/vtest_name"
+               android:id="@+id/vorder_name"
                android:layout_columnSpan="2"
                android:layout_rowWeight="1"
                android:layout_columnWeight="1"
@@ -44,7 +44,7 @@
                    android:textSize="20sp"
                    />
                <TextView
-                   android:id="@+id/vtest_price"
+                   android:id="@+id/vorder_price"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="800"
@@ -76,7 +76,7 @@
                        />
 
                    <TextView
-                       android:id="@+id/vudi"
+                       android:id="@+id/vorder_id"
                        android:textColor="@color/white"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
