@@ -43,6 +43,7 @@ class DoctorDetail : AppCompatActivity() {
             vDocExp.text="Experience : ${exp}"
             vDocName.text=name
             vDocDesc.text=desc
+            cursor.close()
         }
 
 

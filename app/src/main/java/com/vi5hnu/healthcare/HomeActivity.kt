@@ -10,11 +10,15 @@ import androidx.cardview.widget.CardView
 class HomeActivity : AppCompatActivity() {
     private lateinit var vlogOut:CardView
     private lateinit var vFindDoctor:CardView
+    private lateinit var vAboutDevp:CardView
+    private lateinit var vlab_test:CardView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        vlogOut=findViewById(R.id.logout_app) as CardView
+        vlogOut=findViewById(R.id.logout_app)
         vFindDoctor=findViewById(R.id.vfind_doctor)
+        vAboutDevp=findViewById(R.id.vabout_devp)
+        vlab_test=findViewById(R.id.vlab_test)
 
         welcomeUser()
 
@@ -31,6 +35,17 @@ class HomeActivity : AppCompatActivity() {
         vFindDoctor.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
                 startActivity(Intent(this@HomeActivity,FindDoctor::class.java))
+            }
+        })
+
+        vAboutDevp.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v: View?) {
+                startActivity(Intent(this@HomeActivity,AboutDeveloperActivity::class.java))
+            }
+        })
+        vlab_test.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v: View?) {
+                startActivity(Intent(this@HomeActivity,LabTestsActivity::class.java))
             }
         })
     }

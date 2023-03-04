@@ -38,4 +38,5 @@
     <string name="ah_de">Dentists</string>
     <string name="ah_di">Dieticians</string>
     <string name="ah_su">Surgeons</string>
+    <string name="textaboutdevp">About Developer</string>
 </resources>

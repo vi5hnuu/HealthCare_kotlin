@@ -27,7 +27,9 @@ class LoginActivity : AppCompatActivity() {
         tvRegNewUser=findViewById(R.id.tv_reg_new_user)
 
         val sp=getSharedPreferences(getString(R.string.sp_user_info), MODE_PRIVATE)
-        if(sp.getString(getString(R.string.key_username),"NULL")!="NULL"){
+        val usrName=sp.getString(getString(R.string.key_username),"NULL")
+        if(usrName!="NULL"){
+            Database.username=usrName!!  //required in db
             startActivity(Intent(this,HomeActivity::class.java))
             finish()
         }
@@ -43,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
                 val db=Database(this@LoginActivity,getString(R.string.dbName),null,1)
                 if(!db.login(username,pasword)){
                     Toast.makeText(this@LoginActivity,"user does not exist.",Toast.LENGTH_SHORT).show()
+                    db.close()
                     return
                 }
                 /////////Log In Success////////////////////
