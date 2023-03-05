@@ -64,9 +64,10 @@
     <ListView
         android:id="@+id/vorders_container"
         android:layout_width="match_parent"
+        android:layout_weight="1"
         android:padding="5dp"
         android:background="@drawable/curved_corners_less"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         />
 
 </LinearLayout>

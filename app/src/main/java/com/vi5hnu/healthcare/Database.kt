@@ -46,7 +46,7 @@ class Database(context: Context, dbName: String, factory: CursorFactory?, versio
                 "amount number,"+
                 "username text primary key," +
                 "order_id integer check(order_id>=0)," +
-                "type text check(type in (\"TEST\",\"MEDICINE\"))," +
+                "type text check(type in (\"T\",\"M\"))," +
                 "FOREIGN KEY(username) REFERENCES users(username));"
         //in orderTable orderID is uid of labTest
         db?.execSQL(tableDoctorsQuery)
@@ -73,8 +73,8 @@ class Database(context: Context, dbName: String, factory: CursorFactory?, versio
         DENTIST("DE"),
     }
     enum class ORDER_TYPE(val identifier:String){
-        LAB_TEST("TEST"),
-        MEDICINE("MEDICINE"),
+        LAB_TEST("T"),
+        MEDICINE("M"),
     }
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
 
@@ -156,7 +156,7 @@ class Database(context: Context, dbName: String, factory: CursorFactory?, versio
     }
     fun getOrders():Cursor{
         val db:SQLiteDatabase=readableDatabase
-        val cursor=db.query("orders", arrayOf("_id","name","amount","order_id"),null,null,null,null,null)
+        val cursor=db.query("orders", arrayOf("_id","name","amount","order_id","type"),null,null,null,null,null)
         return cursor
     }
     fun getOrderTotal():String{
@@ -169,7 +169,7 @@ class Database(context: Context, dbName: String, factory: CursorFactory?, versio
         cursor.close()
         return total;
     }
-    fun removeFromOrders(order_id:String,name:String,amount:String,type:ORDER_TYPE){
+    fun removeFromOrders(order_id:String,type:ORDER_TYPE){
         if(!orderAlreadyExist(username,order_id,type)){
             return
         }

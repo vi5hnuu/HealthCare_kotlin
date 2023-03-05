@@ -94,6 +94,12 @@
                     android:text="@string/textbuy_medicine"
                     />
             </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/not_available"
+                android:alpha="0.5"
+                />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:id="@+id/vfind_doctor"
@@ -131,6 +137,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/vhealth_articles"
             android:background="@color/colorGrey"
             android:layout_margin="5dp"
             android:layout_columnWeight="1"

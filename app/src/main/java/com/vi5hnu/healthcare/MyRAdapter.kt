@@ -36,7 +36,7 @@ class MyRAdapter(private val Context:Context,private val cursor:Cursor) : Recycl
                     Toast.makeText(this@MyRAdapter.Context,"Adding ${holder.vTestName.text} to cart.",Toast.LENGTH_SHORT).show()
                     db.addToOrders(uid,testName,price,Database.ORDER_TYPE.LAB_TEST)
                 }else{
-                    db.removeFromOrders(uid,testName,price,Database.ORDER_TYPE.LAB_TEST)
+                    db.removeFromOrders(uid,Database.ORDER_TYPE.LAB_TEST)
                     Toast.makeText(this@MyRAdapter.Context,"Removing ${holder.vTestName.text} from cart.",Toast.LENGTH_SHORT).show()
                 }
                 db.close()
