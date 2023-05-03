@@ -31,7 +31,6 @@ class HomeActivity : AppCompatActivity() {
                 val spEditor=getSharedPreferences(getString(R.string.sp_user_info), MODE_PRIVATE).edit()
                 spEditor.remove(getString(R.string.key_username))
                 spEditor.apply()
-
                 startActivity(Intent(this@HomeActivity,LoginActivity::class.java))
                 finish()
             }

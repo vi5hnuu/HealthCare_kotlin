@@ -27,7 +27,6 @@ class OrdersActivity : AppCompatActivity() {
         val db=Database(this,getString(R.string.dbName),null,1)
 
         vorderTotal.text=db.getOrderTotal()
-        db.close()
         //TODO : Error if orders is empty
         adp= SimpleCursorAdapter(this,
             R.layout.order_tile,
